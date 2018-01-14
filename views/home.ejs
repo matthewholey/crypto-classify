@@ -1,0 +1,17 @@
+<div class="container">
+	<h1 class="text-center">Cryptocurrencies</h1>
+	<p class="text-center">
+		<a href="/boards">Boards</a>
+	</p>
+
+	<% cryptoDataArr.forEach(function(crypto) { %>
+	    <div class="well">
+	    	<img src="<%= baseImageURL+crypto.ImageUrl %>" class="cryptoImg">
+	    	<h4><%= crypto.FullName %></h4>
+	    	<form method="POST" action="/boards">
+	    		<input hidden type="text" name="name" value="<%= crypto.FullName %>">
+	    		<button class="btn btn-primary" type="submit">Add to Boards</button>
+	    	</form>
+	    </div>
+    <% }); %>
+</div>
