@@ -8,7 +8,7 @@ router.get("/login", function(req, res) {
 });
 
 router.post("/login", passport.authenticate("local", {
-	successRedirect: "/profile",
+	successRedirect: "/",
 	successFlash: "Login Successful!",
 	failureRedirect: "/auth/login",
 	failureFlash: "Invalid Credentials"
@@ -32,7 +32,7 @@ router.post("/signup", function(req, res, next) {
 		if(wasCreated) {
 			//Good job, you didn't try to create a duplicate
 			passport.authenticate("local", {
-				successRedirect: "/profile",
+				successRedirect: "/",
 				successFlash: "Successfully Logged In"
 			})(req, res, next);
 		}
@@ -61,7 +61,7 @@ router.get("/facebook", passport.authenticate("facebook", {
 
 //Handle the response from Facebook (logic located in passport config)
 router.get("/callback/facebook", passport.authenticate("facebook", {
-	successRedirect: "/profile",
+	successRedirect: "/",
 	successFlash: "You have successfully logged in via Facebook",
 	failureRedirect: "/auth/login",
 	failureFlash: "You tried to login with invalid Facebook credentials"

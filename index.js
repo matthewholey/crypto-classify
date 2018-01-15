@@ -49,7 +49,7 @@ app.get("/", function(req, res) {
 					cryptoDataArr.push(cryptoData); 
 				}
 			}
-			res.render("home", {cryptoDataArr: cryptoDataArr, baseImageURL: baseImageURL});
+			res.render("home", {cryptoArr: cryptoArr, cryptoDataArr: cryptoDataArr, baseImageURL: baseImageURL});
 		});
 	});
 });
@@ -57,6 +57,10 @@ app.get("/", function(req, res) {
 app.get("/profile", isLoggedIn, function(req, res) {
 	res.render("profile");
 });
+
+app.use("/board", require("./controllers/cryptos"));
+
+app.use(express.static(__dirname + '/public'));
 
 app.use("/auth", require("./controllers/auth"));
 

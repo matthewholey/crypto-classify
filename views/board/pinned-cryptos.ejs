@@ -1,0 +1,15 @@
+<h2 class="text-center">Board</h2>
+<% if(board.length <= 0){ %>
+	<h3 class="text-center">Pin the coins that interest you!</h3>
+<% } else { %>
+	<% board.forEach(function(item){ %>
+		<h4>
+			<a href="/board/<% item.id %>">
+				<% item.name %>
+			</a>
+		</h4>
+		<a href="/board/<% item.id %>" class="btn btn-danger delete-link">
+			Unpin
+		</a>
+	<% }); %>
+<% } %>
