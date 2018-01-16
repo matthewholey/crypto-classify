@@ -1,20 +1,22 @@
-var express = require('express');
+var express = require("express");
+var async = require("async");
 var router = express.Router();
-var db = require('../models');
+var db = require("../models");
 
-// GET - return the user's board page
-router.get('/', function(req, res) {
-    db.crypto.findAll().then(function(board){
-		res.render("board/pinned-cryptos", {board: board});
+// POST - post selected crypto to an existing board and add it to the cryptos table in the database
+router.post("/", function(req, res) {
+    db.crypto.create(req.body).then(function() {
+	    res.redirect("/boards/");
+    }).catch(function(err){
+		res.status(status).send("uh oh!", err);
 	});
 });
 
-// POST - receive the name of a crypto and add it to the database
-router.post('/board', function(req, res) {
-    db.crypto.create(req.body).then(function(req, res) {
-	    res.redirect("/board/");
-    }).catch(function(err){
-		res.status(status).send("uh oh!", err);
+router.get("/:id", function(req, res){
+	db.crypto.findOne({
+		where: {id: req.params.id},
+	}).then(function(board){
+		res.render("/cryptos/single", {crypto: crypto});
 	});
 });
 

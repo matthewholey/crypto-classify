@@ -4,10 +4,15 @@
 	<% cryptoDataArr.forEach(function(crypto) { %>
 	    <div class="well">
 	    	<img src="<%= baseImageURL+crypto.ImageUrl %>" class="cryptoImg">
-	    	<h4><%= crypto.FullName %></h4>
-	    	<form method="POST" action="/board">
-	    		<input hidden type="text" name="name" value="<%= crypto.FullName %>">
-	    		<button class="btn btn-primary" type="submit">Add to Board</button>
+	    	<h4>
+	    		<a href="<%= crypto.CoinName %>">
+	    			<%= crypto.FullName %>
+	    		</a>
+	    	</h4>
+	    	<form method="POST" action="/boards">
+	    		<input hidden type="img" name="Img" value="<%= baseImageURL+crypto.ImageUrl %>">
+	    		<input hidden type="text" name="FullName" value="<%= crypto.FullName %>">
+	    		<button class="btn btn-primary" type="submit">Pin to a Board</button>
 	    	</form>
 	    </div>
     <% }); %>

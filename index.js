@@ -36,7 +36,6 @@ app.get("/", function(req, res) {
 			var symbol = crypto.symbol;
 			symbolArr.push(symbol);
 		});
-		// res.render("home", {cryptoArr: cryptoArr});
 		var cryptoCompareURL = "https://min-api.cryptocompare.com/data/all/coinlist";
 		var cryptoDataArr = [];
 		request(cryptoCompareURL, function(error, response, body) {
@@ -58,7 +57,9 @@ app.get("/profile", isLoggedIn, function(req, res) {
 	res.render("profile");
 });
 
-app.use("/board", require("./controllers/cryptos"));
+app.use("/boards", require("./controllers/boards"));
+
+app.use("/cryptos", require("./controllers/cryptos"));
 
 app.use(express.static(__dirname + '/public'));
 

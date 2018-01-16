@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var crypto = sequelize.define('crypto', {
+  var board = sequelize.define('board', {
     title: DataTypes.TEXT,
-    boardId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return crypto;
+  return board;
 };
