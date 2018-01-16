@@ -34,9 +34,19 @@ router.delete("/:id", function(req, res){
 
 router.get("/:id", function(req, res){
 	db.board.findOne({
-		where: {id: req.params.id},
+		where: {id: req.params.id}
 	}).then(function(board){
 		res.render("boards/single", {board: board});
+	});
+});
+
+router.get("/:title", function(req, res){
+	db.board.findOne(
+	// {
+	// 	where: {userId matches}
+	// }
+	).then(function(board){
+		res.render("home", {boards: boards});
 	});
 });
 
