@@ -2,13 +2,9 @@
 <form method="POST" action="/boards">
 	<span><input name="title" type="text" class="form-control" required><input class="btn btn-primary" type="submit" value="Create Board"></span>
 </form>
-
-<h3 class="text-center">1) Create a board.</h3>
-<h3 class="text-center">2) Pin cryptocurrencies of your choosing.</h3>
-<h3 class="text-center">3) Organize.</h3>
-<h3 class="text-center">4) Make sense of Crypto!</h3>
 <% if(boards.length <= 0){ %>
-	<h4 class="text-center">Create a board to get started!</h4>
+	<h4 class="text-center">1) Create a board to get started!</h4>
+	<h4 class="text-center">2) Pin cryptocurrencies of your choosing.</h4>
 <% } else { %>
 	<% boards.forEach(function(item){ %>
 		<div></div>
@@ -17,7 +13,7 @@
 				<%= item.title %>
 			</a>
 		</h5>
-		<a href="/boards/<% item.id %>" class="btn btn-danger delete-link">
+		<a href="/boards/<%= item.id %>" class="btn btn-danger delete-link">
 			Delete Board
 		</a>
 	<% }); %>

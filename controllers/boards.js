@@ -19,10 +19,11 @@ router.post("/", function(req, res) {
 	});
 });
 
-router.delete("/:id", function(req, res){
+//DELETE - delete selected board and delete it from the boards table in the database
+router.delete("/:id", function(req, res) {
 	console.log("Delete route. ID = ", req.params.id);
 	db.board.destroy({
-		where: { id: req.params.id }
+		where: {id: req.params.id}
 	}).then(function(deleted){
 		console.log("deleted = ", deleted);
 		res.send("success");
@@ -32,7 +33,8 @@ router.delete("/:id", function(req, res){
 	});
 });
 
-router.get("/:id", function(req, res){
+//GET - render the page for the selected cryptocurrency
+router.get("/:id", function(req, res) {
 	db.board.findOne({
 		where: {id: req.params.id}
 	}).then(function(board){
@@ -40,12 +42,11 @@ router.get("/:id", function(req, res){
 	});
 });
 
-router.get("/:title", function(req, res){
-	db.board.findOne(
-	// {
-	// 	where: {userId matches}
-	// }
-	).then(function(board){
+//GET - render the page for the for the selected board
+router.get("/:title", function(req, res) {
+	db.board.findOne({
+		// where: {userId matches}
+	}).then(function(board){
 		res.render("home", {boards: boards});
 	});
 });

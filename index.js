@@ -61,7 +61,7 @@ app.use("/boards", require("./controllers/boards"));
 
 app.use("/cryptos", require("./controllers/cryptos"));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
 app.use("/auth", require("./controllers/auth"));
 

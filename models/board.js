@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.board.belongsTo(models.user);
+        models.board.hasMany(models.crypto);
       }
     }
   });
